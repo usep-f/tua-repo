@@ -1,0 +1,8 @@
+{
+  "name": "(09-Sept) Maltese Remix",
+  "description": "A centralized digital repository for SLCN nursing academic outputs, particularly Nursing Theses and Grand Case Presentations (GCPs).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
