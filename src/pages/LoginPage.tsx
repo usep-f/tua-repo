@@ -432,7 +432,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSuccess }) => {
                   id="login-heading"
                   className="text-2xl sm:text-[26px] font-bold text-white tracking-tight font-serif"
                 >
-                  {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
+                  {mode === 'signin' ? 'Hello and Welcome' : 'Create Account'}
                 </h1>
 
                 <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
