@@ -69,12 +69,15 @@ function MainContent() {
       return;
     }
 
-    if (!user) return;
-
     // If an authenticated user visits /login, redirect to home
-    if (pathname === '/login') {
+    if (user && pathname === '/login') {
       window.history.replaceState(null, '', '/');
       setCurrentView('home');
+      return;
+    }
+
+    if (!user && pathname === '/login') {
+      setCurrentView('login');
       return;
     }
 
@@ -190,10 +193,23 @@ function MainContent() {
       if (window.location.pathname !== '/profile') {
         window.history.pushState(null, '', '/profile');
       }
+    } else if (view === 'login') {
+      if (window.location.pathname !== '/login') {
+        window.history.pushState(null, '', '/login');
+      }
     } else if (view === 'home') {
       if (window.location.pathname !== '/') {
         window.history.pushState(null, '', '/');
       }
+    }
+
+    // Redirect unauthenticated guests to login for protected personal/admin views
+    if (!user && (view === 'bookmarks' || view === 'folders' || view === 'profile' || view === 'student-submit')) {
+      if (window.location.pathname !== '/login') {
+        window.history.pushState(null, '', '/login');
+      }
+      setCurrentView('login');
+      return;
     }
 
     setCurrentView(view);
@@ -222,8 +238,13 @@ function MainContent() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#050c1a] text-slate-100 flex flex-col items-center justify-center p-6 select-none">
-        <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-white/10 flex items-center justify-center mb-5 shadow-2xl shadow-blue-950/60">
-          <span className="text-amber-400 font-serif font-black text-3xl animate-pulse">✛</span>
+        <div className="flex items-center gap-4 mb-5">
+          <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-emerald-500/30 flex items-center justify-center p-2 shadow-2xl shadow-emerald-950/60" title="Trinity University of Asia">
+            <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-full h-full object-contain animate-pulse" />
+          </div>
+          <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-amber-500/30 flex items-center justify-center p-2 shadow-2xl shadow-blue-950/60" title="St. Luke's College of Nursing">
+            <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-full h-full object-contain animate-pulse" />
+          </div>
         </div>
         <h1 className="font-serif text-lg tracking-widest text-slate-200 uppercase font-bold mb-2">
           THE MALTESE ARCHIVE
@@ -259,11 +280,8 @@ function MainContent() {
     );
   }
 
-  // 3. Unauthenticated state: display login page
-  if (!user) {
-    if (currentPath !== '/login') {
-      window.history.replaceState(null, '', '/login');
-    }
+  // 3. Login view (accessible explicitly or when navigating to login)
+  if (currentView === 'login' || (!user && currentPath === '/login')) {
     return (
       <LoginPage
         onSuccess={() => {
@@ -296,6 +314,7 @@ function MainContent() {
             }}
             onPreviewDocument={handlePreviewDocument}
             onOpenFullDocument={handleOpenFullDocument}
+            onNavigateView={handleNavigate}
           />
         )}
 
@@ -414,7 +433,8 @@ function MainContent() {
       <footer className="bg-slate-950 border-t border-white/10 py-10 px-4 sm:px-6 lg:px-8 text-xs text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <span className="text-amber-400 font-serif font-black text-base">✛</span>
+            <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-5 h-5 object-contain" />
+            <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-5 h-5 object-contain" />
             <span className="font-serif font-bold tracking-wider text-slate-200 uppercase">
               THE MALTESE ARCHIVE
             </span>

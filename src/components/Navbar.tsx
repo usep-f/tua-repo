@@ -16,8 +16,8 @@ import { useAuth } from '../context/AuthContext';
 import { useUserActivity } from '../context/UserActivityContext';
 
 interface NavbarProps {
-  currentView: 'home' | 'repository' | 'admin-login' | 'admin-dashboard' | 'admin-upload' | 'admin-manuscripts' | 'student-submit' | 'submission-guidelines' | 'viewer' | 'bookmarks' | 'folders' | 'profile';
-  onNavigate: (view: 'home' | 'repository' | 'admin-login' | 'admin-dashboard' | 'admin-upload' | 'admin-manuscripts' | 'student-submit' | 'submission-guidelines' | 'bookmarks' | 'folders' | 'profile') => void;
+  currentView: 'home' | 'repository' | 'admin-login' | 'admin-dashboard' | 'admin-upload' | 'admin-manuscripts' | 'student-submit' | 'submission-guidelines' | 'viewer' | 'bookmarks' | 'folders' | 'profile' | 'login';
+  onNavigate: (view: 'home' | 'repository' | 'admin-login' | 'admin-dashboard' | 'admin-upload' | 'admin-manuscripts' | 'student-submit' | 'submission-guidelines' | 'bookmarks' | 'folders' | 'profile' | 'login') => void;
   onOpenSetupModal?: () => void;
 }
 
@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setSidebarOpen(true)}
-                className="p-2.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-300 hover:text-white hover:bg-slate-800 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/30"
+                className="md:hidden p-2.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-300 hover:text-white hover:bg-slate-800 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/30"
                 aria-label="Open navigation"
                 title="Open navigation"
               >
@@ -66,10 +66,29 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => onNavigate('home')}
                 className="flex items-center gap-3 cursor-pointer group shrink-0"
               >
-                <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-amber-500 p-0.5 shadow-lg shadow-blue-900/30 group-hover:shadow-amber-500/20 transition-all duration-300">
-                  <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                    <div className="text-amber-400 font-serif font-black text-lg group-hover:scale-110 transition-transform">
-                      ✛
+                <div className="flex items-center gap-2">
+                  <div
+                    className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600/30 to-amber-500/30 p-0.5 shadow-md group-hover:scale-105 transition-all duration-300"
+                    title="Trinity University of Asia"
+                  >
+                    <div className="w-full h-full bg-slate-950/90 rounded-[10px] flex items-center justify-center p-0.5 overflow-hidden">
+                      <img
+                        src="/assets/trinity.webp"
+                        alt="Trinity University of Asia"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-amber-500 p-0.5 shadow-lg shadow-blue-900/30 group-hover:shadow-amber-500/30 group-hover:scale-105 transition-all duration-300"
+                    title="St. Luke's College of Nursing"
+                  >
+                    <div className="w-full h-full bg-slate-950/90 rounded-[10px] flex items-center justify-center p-0.5 overflow-hidden">
+                      <img
+                        src="/assets/college-of-nursing.webp"
+                        alt="St. Luke's College of Nursing"
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                   </div>
                 </div>
@@ -86,6 +105,73 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </div>
               </div>
+            </div>
+
+            {/* Center Desktop Navigation Links */}
+            <div className="hidden md:flex items-center gap-1 lg:gap-2">
+              <button
+                onClick={() => onNavigate('home')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${
+                  currentView === 'home'
+                    ? 'bg-amber-400/15 text-amber-300 border border-amber-400/30 shadow-sm'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-900/60 border border-transparent'
+                }`}
+              >
+                Home
+              </button>
+
+              <button
+                onClick={() => onNavigate('repository')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${
+                  currentView === 'repository'
+                    ? 'bg-amber-400/15 text-amber-300 border border-amber-400/30 shadow-sm'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-900/60 border border-transparent'
+                }`}
+              >
+                Scholarly Repository
+              </button>
+
+              <button
+                onClick={() => onNavigate('bookmarks')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5 ${
+                  currentView === 'bookmarks'
+                    ? 'bg-amber-400/15 text-amber-300 border border-amber-400/30 shadow-sm'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-900/60 border border-transparent'
+                }`}
+              >
+                <span>Bookmarked Files</span>
+                {bookmarkedIds.length > 0 && (
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold">
+                    {bookmarkedIds.length}
+                  </span>
+                )}
+              </button>
+
+              {isAdmin ? (
+                <button
+                  onClick={() => onNavigate('admin-dashboard')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center gap-1 ${
+                    currentView === 'admin-dashboard' || currentView === 'admin-upload' || currentView === 'admin-manuscripts'
+                      ? 'bg-amber-400/15 text-amber-300 border border-amber-400/30 shadow-sm'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-900/60 border border-transparent'
+                  }`}
+                >
+                  <Shield className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Administration</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => onNavigate('student-submit')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center gap-1 ${
+                    currentView === 'student-submit' || currentView === 'submission-guidelines'
+                      ? 'bg-amber-400/15 text-amber-300 border border-amber-400/30 shadow-sm'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-900/60 border border-transparent'
+                  }`}
+                >
+                  <FileUp className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Submit Manuscript</span>
+                </button>
+              )}
             </div>
 
             {/* Right Action Buttons: User status / Auth pill / Logout */}
@@ -129,7 +215,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span>Sign Out</span>
                   </button>
                 </div>
-              ) : null}
+              ) : (
+                <button
+                  onClick={() => onNavigate('login' as any)}
+                  className="hidden sm:flex items-center gap-1.5 text-xs px-3.5 py-1.5 rounded-xl border border-white/10 bg-slate-900/80 text-slate-200 hover:text-white hover:bg-slate-800 transition-all font-semibold"
+                >
+                  <UserIcon className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Sign In</span>
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -154,9 +248,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Sidebar Header */}
         <div className="p-6 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-700 to-amber-500 p-0.5 flex items-center justify-center">
-              <div className="w-full h-full bg-slate-950 rounded-[6px] flex items-center justify-center text-amber-400 font-serif font-black">
-                ✛
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 to-amber-500 p-0.5 flex items-center justify-center shadow-md">
+                <div className="w-full h-full bg-slate-950 rounded-[6px] flex items-center justify-center p-0.5 overflow-hidden">
+                  <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-full h-full object-contain" />
+                </div>
+              </div>
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-700 to-amber-500 p-0.5 flex items-center justify-center shadow-md">
+                <div className="w-full h-full bg-slate-950 rounded-[6px] flex items-center justify-center p-0.5 overflow-hidden">
+                  <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-full h-full object-contain" />
+                </div>
               </div>
             </div>
             <div>

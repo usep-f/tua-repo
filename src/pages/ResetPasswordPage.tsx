@@ -252,8 +252,13 @@ export const ResetPasswordPage: React.FC<ResetPasswordPageProps> = ({ onReturnTo
       {/* Institutional Top Brand Header */}
       <header className="relative z-10 py-6 px-6 sm:px-12 flex items-center justify-between border-b border-white/5 bg-slate-950/40 backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center shadow-md">
-            <span className="text-amber-400 font-serif font-black text-lg">✛</span>
+          <div className="flex items-center gap-2">
+            <div className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center p-1 shadow-md" title="Trinity University of Asia">
+              <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-full h-full object-contain" />
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center p-1 shadow-md" title="St. Luke's College of Nursing">
+              <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-full h-full object-contain" />
+            </div>
           </div>
           <div>
             <span className="font-serif font-bold tracking-wider text-slate-200 uppercase text-sm sm:text-base">
@@ -567,7 +572,9 @@ export const ResetPasswordPage: React.FC<ResetPasswordPageProps> = ({ onReturnTo
       </main>
 
       {/* Institutional Footer */}
-      <footer className="relative z-10 py-4 px-6 text-center text-[11px] text-slate-500 border-t border-white/5 bg-slate-950/40 backdrop-blur-md">
+      <footer className="relative z-10 py-4 px-6 text-center text-[11px] text-slate-400 border-t border-white/5 bg-slate-950/40 backdrop-blur-md flex items-center justify-center gap-2">
+        <img src="/assets/trinity.webp" alt="TUA" className="w-4 h-4 object-contain inline-block" />
+        <img src="/assets/college-of-nursing.webp" alt="SLCN" className="w-4 h-4 object-contain inline-block" />
         <span>Trinity University of Asia • St. Luke&apos;s College of Nursing Archive</span>
       </footer>
     </div>

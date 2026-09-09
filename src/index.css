@@ -84,3 +84,23 @@
   }
 }
 
+/* Floating Manuscript Motion */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--paper-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--paper-rotate, 0deg));
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-slow 7.5s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+

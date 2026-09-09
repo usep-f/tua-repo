@@ -226,8 +226,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSuccess }) => {
       {/* Institutional Top Brand Header */}
       <header className="relative z-10 py-6 px-6 sm:px-12 flex items-center justify-between border-b border-white/5 bg-slate-950/40 backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center shadow-md">
-            <span className="text-amber-400 font-serif font-black text-lg">✛</span>
+          <div className="flex items-center gap-2">
+            <div className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center p-1 shadow-md" title="Trinity University of Asia">
+              <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-full h-full object-contain" />
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center p-1 shadow-md" title="St. Luke's College of Nursing">
+              <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-full h-full object-contain" />
+            </div>
           </div>
           <div>
             <span className="font-serif font-bold tracking-wider text-slate-200 uppercase text-sm sm:text-base">
@@ -422,10 +427,21 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSuccess }) => {
             <>
               {/* Emblem & Title */}
               <div className="text-center mb-7">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-b from-blue-900/60 to-slate-900 border border-white/10 mb-4 shadow-lg shadow-blue-950/40">
-                  <span className="text-amber-400 font-serif font-black text-2xl leading-none">
-                    ✛
-                  </span>
+                <div className="inline-flex items-center justify-center gap-3 mb-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-b from-emerald-950/60 to-slate-900 border border-emerald-500/20 p-1.5 shadow-lg shadow-emerald-950/40 flex items-center justify-center" title="Trinity University of Asia">
+                    <img
+                      src="/assets/trinity.webp"
+                      alt="Trinity University of Asia"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-b from-blue-900/60 to-slate-900 border border-amber-500/20 p-1.5 shadow-lg shadow-blue-950/40 flex items-center justify-center" title="St. Luke's College of Nursing">
+                    <img
+                      src="/assets/college-of-nursing.webp"
+                      alt="College of Nursing"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                 </div>
 
                 <h1
@@ -665,8 +681,9 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSuccess }) => {
       {/* Institutional Footer */}
       <footer className="relative z-10 py-5 px-6 text-center text-xs text-slate-400 border-t border-white/5 bg-slate-950/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="text-amber-400 font-serif font-black">✛</span>
+          <div className="flex items-center gap-2.5">
+            <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-4 h-4 object-contain" />
+            <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-4 h-4 object-contain" />
             <span className="font-serif tracking-wider uppercase text-slate-300">
               THE MALTESE ARCHIVE
             </span>

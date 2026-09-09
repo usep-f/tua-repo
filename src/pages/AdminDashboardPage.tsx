@@ -578,8 +578,13 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
       {/* Top Banner with Admin Info */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-lg shadow-amber-500/10">
-            <ShieldCheck className="w-6 h-6" />
+          <div className="flex items-center gap-2">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-900/90 border border-emerald-500/30 p-1.5 flex items-center justify-center shadow-md" title="Trinity University of Asia">
+              <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-full h-full object-contain" />
+            </div>
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-900/90 border border-amber-500/30 p-1.5 flex items-center justify-center shadow-md" title="St. Luke's College of Nursing">
+              <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-full h-full object-contain" />
+            </div>
           </div>
           <div>
             <h1 className="text-2xl font-bold text-white tracking-tight font-serif">

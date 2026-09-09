@@ -37,8 +37,13 @@ export const SubmissionGuidelinesPage: React.FC<SubmissionGuidelinesPageProps> =
         {/* Title Banner */}
         <div className="border-b border-white/10 pb-6">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
-              <BookOpen className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <div className="w-9 h-9 rounded-xl bg-slate-900 border border-emerald-500/30 p-1 flex items-center justify-center shadow-md" title="Trinity University of Asia">
+                <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-full h-full object-contain" />
+              </div>
+              <div className="w-9 h-9 rounded-xl bg-slate-900 border border-amber-500/30 p-1 flex items-center justify-center shadow-md" title="St. Luke's College of Nursing">
+                <img src="/assets/college-of-nursing.webp" alt="College of Nursing" className="w-full h-full object-contain" />
+              </div>
             </div>
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-400">
               The Maltese Archive • Digital Repository Policy

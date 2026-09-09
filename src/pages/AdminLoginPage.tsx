@@ -180,8 +180,27 @@ ON CONFLICT (user_id) DO UPDATE SET role = 'admin';`
 
           {/* Header */}
           <div className="text-center mb-8 relative z-10">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600/30 to-amber-500/20 border border-amber-400/30 text-amber-300 mb-4 shadow-lg shadow-amber-500/10">
-              <Shield className="w-7 h-7" />
+            <div className="inline-flex items-center justify-center gap-3 mb-4">
+              <div
+                className="w-12 h-12 rounded-2xl bg-slate-950/80 border border-emerald-500/30 p-1.5 shadow-lg shadow-emerald-950/30 flex items-center justify-center"
+                title="Trinity University of Asia"
+              >
+                <img
+                  src="/assets/trinity.webp"
+                  alt="Trinity University of Asia"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div
+                className="w-12 h-12 rounded-2xl bg-slate-950/80 border border-amber-500/30 p-1.5 shadow-lg shadow-blue-950/30 flex items-center justify-center"
+                title="St. Luke's College of Nursing"
+              >
+                <img
+                  src="/assets/college-of-nursing.webp"
+                  alt="St. Luke's College of Nursing"
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
 
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white uppercase font-serif">

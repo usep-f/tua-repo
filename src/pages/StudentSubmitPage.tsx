@@ -483,9 +483,16 @@ export const StudentSubmitPage: React.FC<StudentSubmitPageProps> = ({
       {/* Header & Navigation */}
       <div className="flex items-center justify-between gap-4 mb-8">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-amber-500 p-0.5 flex items-center justify-center">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center text-amber-400 font-serif font-black">
-              ✛
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600/30 to-amber-500/30 p-0.5 flex items-center justify-center shadow-md" title="Trinity University of Asia">
+              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center p-1 overflow-hidden">
+                <img src="/assets/trinity.webp" alt="Trinity University of Asia" className="w-full h-full object-contain" />
+              </div>
+            </div>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-amber-500 p-0.5 flex items-center justify-center shadow-md" title="St. Luke's College of Nursing">
+              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center p-1 overflow-hidden">
+                <img src="/assets/college-of-nursing.webp" alt="St. Luke's College of Nursing" className="w-full h-full object-contain" />
+              </div>
             </div>
           </div>
           <div>
